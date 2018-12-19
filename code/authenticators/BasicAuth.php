@@ -12,7 +12,7 @@ namespace Ntb\APIBasicAuthApp;
  *
  * @author Andre Lohmann <lohmann.andre@gmail.com>
  */
-class BasicAuth extends \Object implements \Ntb\RestAPI\IAuth {
+class BasicAuth extends \SS_Object implements \Ntb\RestAPI\IAuth {
 
         public static function authenticate($key, $secret) {
             $authenticator = \Injector::inst()->get('ApiMemberAuthenticator');
@@ -56,15 +56,15 @@ class BasicAuth extends \Object implements \Ntb\RestAPI\IAuth {
             $app = self::getBasicAuthApp();
             return ($app instanceof \Ntb\APIBasicAuthApp\APIAccessApp) ? \DataObject::get(\Config::inst()->get('BaseRestController', 'Owner'))->byID($app->ID) : null;
         }
-        
+
         /**
          * @return Member
          */
         protected static function getBasicAuthApp(){
-            
+
             //$isRunningTests = (class_exists('SapphireTest', false) && SapphireTest::is_running_test());
             //if(!Security::database_is_ready() || (Director::is_cli() && !$isRunningTests)) return true;
-            
+
             /*
              * Enable HTTP Basic authentication workaround for PHP running in CGI mode with Apache
              * Depending on server configuration the auth header may be in HTTP_AUTHORIZATION or

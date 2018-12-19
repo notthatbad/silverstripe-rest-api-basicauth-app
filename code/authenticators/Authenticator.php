@@ -8,7 +8,7 @@ namespace Ntb\APIBasicAuthApp;
  * @author Andre Lohmann <lohmann.andre@gmail.com>
  * @package silverstripe-rest-api-basicauth-app
  */
-class Authenticator extends \Object {
+class Authenticator extends \SS_Object {
 
 	/**
 	 * Attempt to find and authenticate app if possible from the given data
@@ -44,10 +44,10 @@ class Authenticator extends \Object {
 	 * Method to authenticate an app
 	 *
 	 * @param array $data Raw data to authenticate the app
-         * 
+         *
 	 * @return bool|APIAccessApp Returns FALSE if authentication fails, otherwise
-	 *                     the app object
-         * 
+	 *                     the app Object
+         *
 	 */
 	public static function authenticate($data) {
 		// Find authenticated app
@@ -56,4 +56,3 @@ class Authenticator extends \Object {
 		return $success ? $app : null;
 	}
 }
-
